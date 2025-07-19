@@ -13,12 +13,12 @@ terraform {
   }
 
   # COMMENT THIS BLOCK DURING INITIAL BOOTSTRAP
-  backend "azurerm" {
-    resource_group_name  = "tfstate-rg"
-    storage_account_name = "yourtfstatestg" # must be globally unique
-    container_name       = "tfstate"
-    key                  = "keyvault.tfstate"
-  }
+  #backend "azurerm" {
+  #  resource_group_name  = "tfstate-rg"
+  #  storage_account_name = "yourtfstatestg" # must be globally unique
+  #  container_name       = "tfstate"
+  #  key                  = "keyvault.tfstate"
+  #}
 }
 
 provider "azurerm" {
