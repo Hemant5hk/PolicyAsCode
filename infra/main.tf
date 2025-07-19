@@ -85,31 +85,31 @@ resource "azurerm_key_vault" "keyvault" {
   sku_name                    = "standard"
   purge_protection_enabled    = true
 
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
+ access_policy {
+  tenant_id = "1d801b12-cb0f-4cdf-b8be-5b8aed9fd85c" # from az account show
+  object_id = "26feceda-1191-4c72-806f-2c715d345e4d" # your actual object ID
 
-    key_permissions = [
-      "Get",
-      "List",
-      "Create",
-      "Delete"
-    ]
+  key_permissions = [
+    "Get",
+    "List",
+    "Create",
+    "Delete"
+  ]
 
-    secret_permissions = [
-      "Get",
-      "List",
-      "Set",
-      "Delete"
-    ]
+  secret_permissions = [
+    "Get",
+    "List",
+    "Set",
+    "Delete"
+  ]
 
-    certificate_permissions = [
-      "Get",
-      "List",
-      "Create",
-      "Delete"
-    ]
-  }
+  certificate_permissions = [
+    "Get",
+    "List",
+    "Create",
+    "Delete"
+  ]
+ }
 }
 
 resource "azurerm_monitor_diagnostic_setting" "kv_diag" {
