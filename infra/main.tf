@@ -10,7 +10,7 @@ terraform {
       source  = "hashicorp/random"
       version = ">= 3.1.0"
     }
-  }
+  } 
 
   # NOTE: Comment this out until backend is bootstrapped
   #backend "azurerm" {
