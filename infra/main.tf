@@ -4,7 +4,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.70.0"  # Adjust version as needed
+      version = "~> 3.70.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -12,10 +12,10 @@ terraform {
     }
   }
 
-  # COMMENT THIS BLOCK DURING INITIAL BACKEND BOOTSTRAP
+  # COMMENT THIS BLOCK DURING INITIAL BOOTSTRAP
   #backend "azurerm" {
   #  resource_group_name  = "tfstate-rg"
-  #  storage_account_name = "yourtfstatestg"     # Must be globally unique
+  #  storage_account_name = "yourtfstatestg" # must be globally unique
   #  container_name       = "tfstate"
   #  key                  = "keyvault.tfstate"
   #}
@@ -40,7 +40,7 @@ resource "azurerm_resource_group" "tfstate_rg" {
 }
 
 resource "azurerm_storage_account" "tfstate_sa" {
-  name                     = "yourtfstatestg"  # globally unique
+  name                     = "yourtfstatestg" # must be globally unique
   resource_group_name      = azurerm_resource_group.tfstate_rg.name
   location                 = azurerm_resource_group.tfstate_rg.location
   account_tier             = "Standard"
@@ -89,9 +89,26 @@ resource "azurerm_key_vault" "keyvault" {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
 
-    key_permissions         = ["get", "list", "create", "delete"]
-    secret_permissions      = ["get", "list", "set", "delete"]
-    certificate_permissions = ["get", "list", "create", "delete"]
+    key_permissions = [
+      "Get",
+      "List",
+      "Create",
+      "Delete"
+    ]
+
+    secret_permissions = [
+      "Get",
+      "List",
+      "Set",
+      "Delete"
+    ]
+
+    certificate_permissions = [
+      "Get",
+      "List",
+      "Create",
+      "Delete"
+    ]
   }
 }
 
