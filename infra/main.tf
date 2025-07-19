@@ -19,7 +19,7 @@ terraform {
   #  container_name       = "tfstate"
   #  key                  = "keyvault.tfstate"
   #}
-#}
+}
 
 provider "azurerm" {
   features {}
